@@ -3,21 +3,21 @@ import urllib
 import json
 
 TOPIC_LIST = [
-    'dachshund'
-    #'pug', 
-    #'dogs', 
-    #'beagles', 
-    #'beagles', 
-    #'chihuahua', 
-    #'itgreyhound', 
-    #'greyhound', 
-    #'greyhound-italiano', 
-    #'whippet', 
-    #'toydog', 
-    #'dog-lovers', 
-    #'activedogs', 
-    #'dog-play-groups', 
-    #'smallbreeddogs'
+    'dachshund',
+    'pug', 
+    'dogs', 
+    'beagles', 
+    'beagles', 
+    'chihuahua', 
+    'itgreyhound', 
+    'greyhound', 
+    'greyhound-italiano', 
+    'whippet', 
+    'toydog', 
+    'dog-lovers', 
+    'activedogs', 
+    'dog-play-groups', 
+    'smallbreeddogs'
 ]
 GroupIds = []
 
@@ -35,7 +35,7 @@ for topic in TOPIC_LIST:
     data = {}
     data['key'] = apikey
     data['topic'] = topic
-    data['page'] = "200"
+    data['page'] = "10000"
     params = urllib.urlencode(data)
     
     response = urllib2.urlopen(baseurl + params).read()
@@ -48,5 +48,8 @@ for topic in TOPIC_LIST:
         else:
             print "PRIVATE: " + group["name"]
 
-
+print "GroupIds = ["
 print ','.join( unique(GroupIds))
+print "]"
+
+exit();
