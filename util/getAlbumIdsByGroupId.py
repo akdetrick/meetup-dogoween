@@ -2,12 +2,15 @@ import yaml
 import urllib2
 import urllib
 import json
+import re
 
 f = open('../data.yaml')
 config = yaml.load(f)
 f.close()
 
-GroupIds = config[group_ids]
+Keywords = config["word_list"]
+GroupIds = config["group_ids"]
+AlbumIds = [] 
 
 apikey = '5d469c7d31414635667c333268774d'
 baseurl = 'https://api.meetup.com/2/photo_albums/?'
@@ -18,26 +21,30 @@ def unique(seq):
     setified = set(seq)
     return list(setified)
 
-#for topic in TOPIC_LIST:
-    #print "fetching group ids for " + topic
-    #data = {}
-    #data['key'] = apikey
-    #data['topic'] = topic
-    #data['page'] = "10000"
-    #params = urllib.urlencode(data)
+Filter = re.compile( '(' + '|'.join(Keywords) + ')', i )
+
+for groupId in GroupIds:
+    print "fetching albums for " + str(groupId)
+
+    data = {}
+    data['key'] = apikey
+    data['group_id'] = groupId
+    data['page'] = "10000"
+
+    params = urllib.urlencode(data)
+    full_url = baseurl+params
+
+    # /2/photo_albums isn't utf8 by default
+    request = urllib2.Request(full_url, headers={"Accept-Charset":"utf-8"})
     
-    #response = urllib2.urlopen(baseurl + params).read()
-    #results = parse_json(response) 
+    response = urllib2.urlopen(request).read()
+    results = parse_json(response) 
 
-    #for group in results["results"]:
-        #if str(group['visibility']) == "public":
-            #print "+ " + group["name"]
-            #GroupIds.append( str(group["id"]) )
-        #else:
-            #print "PRIVATE: " + group["name"]
+    for album in results["results"]:
+        # TODO: filter by title for keywords, then put them in albumids list
+        print album["title"]    
 
-#print "GroupIds = ["
-#print ','.join( unique(GroupIds))
-#print "]"
+
+print ','.join( unique(AlbumIds) )
 
 exit();
