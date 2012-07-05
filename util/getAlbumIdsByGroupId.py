@@ -21,10 +21,9 @@ def unique(seq):
     setified = set(seq)
     return list(setified)
 
-Filter = re.compile( '(' + '|'.join(Keywords) + ')', i )
+Filter = re.compile( '(' + '|'.join(Keywords) + ')', re.IGNORECASE )
 
 for groupId in GroupIds:
-    print "fetching albums for " + str(groupId)
 
     data = {}
     data['key'] = apikey
@@ -41,8 +40,13 @@ for groupId in GroupIds:
     results = parse_json(response) 
 
     for album in results["results"]:
-        # TODO: filter by title for keywords, then put them in albumids list
-        print album["title"]    
+
+        if 'title' in album:
+            match = Filter.match(album["title"])
+
+            if match:
+                print album["title"] + ' | ' + str(album["photo_album_id"])
+                AlbumIds.append( str(album["photo_album_id"]) )
 
 
 print ','.join( unique(AlbumIds) )
