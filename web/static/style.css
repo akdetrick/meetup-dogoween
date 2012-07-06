@@ -171,11 +171,11 @@ header, #content, footer {
 #dog.loading:after {
     content: "loadin' next dog";
     color: #fff;
-    font-size: 36px;
+    font-size: 50px;
     font-weight: bold;
     position: absolute;
-    top: 340px;
-    left: 138px;
+    top: 336px;
+    left: 80px;
 }
 
 #dog img {
@@ -188,6 +188,17 @@ header, #content, footer {
     height: 400px;
     width: 200px;
     text-align: left;
+}
+
+#controls p {
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 20px 0 0 14px;
+}
+#controls p strong {
+    font-size: 34px;
+    color: #E6304C;
+    font-family: helvetica, arial, sans-serif;
 }
 
 footer {

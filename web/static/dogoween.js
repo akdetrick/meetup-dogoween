@@ -16,6 +16,8 @@ $(function() {
 
             $.ajax({ url: "/_get_new_photo" }).done(function(data) {
                 currentUrl = data.url;
+               $('#candycount').text(data.candycount);
+                //window.location.hash = data.photoindex;
                 $dogImg.attr('src', data.url).load(function() {
                     $dogFrame.find('a').attr('href', data.url);
                     $dogFrame.removeClass('transitionable');
@@ -35,7 +37,7 @@ $(function() {
                     imgurl: $dogImg.attr('src')
                 },
                 success: function(data) {
-                    console.warn(data);
+                   $('#candycount').text(data.candycount);
                 }
             }); 
 

@@ -20,36 +20,81 @@ app.debug = True
 
 @app.route('/')
 def index():
-    return render_template('index.html', photourl=choice(PhotoUrls)) 
+    D = shelve.open('../storage/candy', writeback=True, flag='c')
+    imgurl = choice(PhotoUrls)
+
+    try:
+        temp = D[str(imgurl)]
+    except KeyError: 
+        temp = None
+        print "you tried to get a non-existent key"
+
+    if temp:
+        return render_template('index.html', photourl=str(imgurl), candycount=temp) 
+    else:
+        return render_template('index.html', photourl=str(imgurl), candycount=0) 
 
 
 @app.route('/_get_new_photo')
 def get_new_photo():
-    return jsonify(url=str(choice(PhotoUrls)))
+    D = shelve.open('../storage/candy', writeback=True, flag='c')
+    imgurl = choice(PhotoUrls)
+    idx = PhotoUrls.index(imgurl)
+
+    try:
+        temp = D[str(imgurl)]
+    except KeyError: 
+        temp = None
+        print "you tried to get a non-existent key"
+
+    D.close()
+    
+    if temp:
+        return jsonify(url=str(imgurl), candycount=temp, photoindex=idx)
+    else:
+        return jsonify(url=str(imgurl), candycount=0, photoindex=idx)
 
 
 @app.route('/_record_candy', methods=['POST'])
 def record_candy():
     imgurl = request.form.get('imgurl')
-    print "got"+str(imgurl)
 
-    D = shelve.open('../storage/candy', 'n')
+    D = shelve.open('../storage/candy', writeback=True, flag='c')
 
-    if data and imgurl:
-        D[str(imgurl)] += 1
-        print data
-        return jsonify(success="updated candy count to "+str(data))
-    elif imgurl:
-        D[str(imgurl)] = 1
-        print data
-        return jsonify(success="recorded first candy")
+    try:
+        temp = D[str(imgurl)]
+    except KeyError: 
+        temp = None
+        print "you tried to get a non-existent key"
+
+    if temp is not None:
+        temp += 1
+        D[str(imgurl)] = temp
+        print D[str(imgurl)]
+        return jsonify(candycount=temp)
     else:
-        print "why u no url?"
+        D[str(imgurl)] = 1
+        print D[str(imgurl)]
+        return jsonify(candycount=1)
+        
+    D.close()
 
 
-@app.route('/photo/<int:photo_id>')
-def deeplink(photo_id):
-    return 'photo deep link to photo ' + str(photo_id)
+@app.route('/photo/<int:photo_idx>')
+def deeplink(photo_idx):
+    D = shelve.open('../storage/candy', writeback=True, flag='c')
+    imgurl = PhotoUrls[photo_idx]
+
+    try:
+        temp = D[str(imgurl)]
+    except KeyError: 
+        temp = None
+        print "you tried to get a non-existent key"
+
+    if temp:
+        return render_template('index.html', photourl=str(imgurl), candycount=temp) 
+    else:
+        return render_template('index.html', photourl=str(imgurl), candycount=0) 
 
 if __name__ == '__main__':
     app.run()
