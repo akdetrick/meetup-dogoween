@@ -11,7 +11,7 @@ f.close()
 AlbumIds = config["album_ids"]
 PhotoUrls = [] 
 
-apikey = '5d469c7d31414635667c333268774d'
+apikey = 'API_KEY_HERE' # my api key has been reset if you're curious enough to check revision history
 baseurl = 'https://api.meetup.com/2/photos/?'
 
 parse_json = lambda s: json.loads(s.decode('utf-8'))
