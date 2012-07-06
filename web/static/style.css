@@ -97,7 +97,7 @@ line-height: 1.1; }
 h1 {
 font-family: "Londrina Shadow";
 color: #E6304C;
-text-shadow: -1px -1px 1px pink;
+text-shadow: 3px 3px 1px pink;
 font-size: 72px;
 letter-spacing: -0.75px; }
 
@@ -112,7 +112,7 @@ h4 {
 color: #333;
 margin-bottom: 0px;
 opacity: 0.8;
-text-shadow: -1px -1px 0px #999;
+text-shadow: -1px -1px 0px #eee;
 font-size: 21px; }
 
 h5 {
