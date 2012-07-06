@@ -1,3 +1,4 @@
+import os
 import yaml
 import shelve
 from random import choice
@@ -97,5 +98,14 @@ def deeplink(photo_idx):
         return render_template('index.html', photourl=str(imgurl), candycount=0) 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=37372)
+    try:
+        portvar = os.environ['PORT']
+    except KeyError:
+        portvar = None
+        print "not on heroku"
+
+    if portvar:
+        app.run(host='0.0.0.0',port=os.environ['PORT'])
+    else:
+        app.run(host='0.0.0.0',port=5000)
 
