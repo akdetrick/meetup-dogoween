@@ -154,7 +154,7 @@ header, #content, footer {
 
 #dog {
     background: #fff url(dogbg.jpeg) repeat;
-    box-shadow: 0px 0px 7px rgba(15,15,15,0.6);
+    box-shadow: 0px 0px 12px rgba(15,15,15,0.6);
     height: 400px;
     width: 600px;
     margin-right: 18px;
@@ -171,6 +171,7 @@ header, #content, footer {
 #dog.loading:after {
     content: "loadin' next dog";
     color: #fff;
+    text-shadow: 3px 3px #800000;
     font-size: 50px;
     font-weight: bold;
     position: absolute;
@@ -191,9 +192,9 @@ header, #content, footer {
 }
 
 #controls p {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.2;
-    margin: 20px 0 0 14px;
+    margin: 20px 0 0 16px;
 }
 #controls p strong {
     font-size: 34px;
