@@ -97,5 +97,5 @@ def deeplink(photo_idx):
         return render_template('index.html', photourl=str(imgurl), candycount=0) 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0',port=37372)
 
