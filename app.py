@@ -23,6 +23,7 @@ app.debug = True
 def index():
     D = shelve.open('storage/candy', writeback=True, flag='c')
     imgurl = choice(PhotoUrls)
+    idx = PhotoUrls.index(imgurl)
 
     try:
         temp = D[str(imgurl)]
@@ -31,9 +32,9 @@ def index():
         print "you tried to get a non-existent key"
 
     if temp:
-        return render_template('index.html', photourl=str(imgurl), candycount=temp) 
+        return render_template('index.html', photourl=str(imgurl), candycount=temp, photoindex=idx) 
     else:
-        return render_template('index.html', photourl=str(imgurl), candycount=0) 
+        return render_template('index.html', photourl=str(imgurl), candycount=0, photoindex=idx) 
 
 
 @app.route('/_get_new_photo')

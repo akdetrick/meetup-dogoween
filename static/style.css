@@ -203,6 +203,13 @@ header, #content, footer {
     color: #E6304C;
     font-family: helvetica, arial, sans-serif;
 }
+#controls small {
+    display: block;
+    margin-top: 88px;
+    margin-left: 22px;
+    font-size: 10px;
+    color: #777;
+}
 
 footer {
     width: 100%;
