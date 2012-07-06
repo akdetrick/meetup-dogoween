@@ -241,18 +241,19 @@ footer a {
     right: 29px;
     top: 63px;
     opacity: 1;
-    background: url(http://4.bp.blogspot.com/-E2N-z9W-KHI/TqKxUtlZVgI/AAAAAAAAAiA/zR5xFc5WBC0/s320/halloweencandy.PNG) no-repeat;
+    background: url(candy.png) no-repeat;
     background-size: cover;
+   -webkit-transform: rotate(180deg); 
+   -moz-transform: rotate(180deg);
 }
 .treat.transitionable {
-    -webkit-transition: all 1200ms cubic-bezier(0.420, 0.000, 1.000, 1.000); 
-    -moz-transition: all 1200ms cubic-bezier(0.420, 0.000, 1.000, 1.000); 
-    -ms-transition: all 1200ms cubic-bezier(0.420, 0.000, 1.000, 1.000); 
-    -o-transition: all 1200ms cubic-bezier(0.420, 0.000, 1.000, 1.000); 
-    transition: all 1200ms cubic-bezier(0.420, 0.000, 1.000, 1.000); /* ease-in */
+    -webkit-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+   -moz-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
 }
 .treat.given {
-   right: 600px; 
+   right: 500px; 
    top: 145px;
-   opacity: 0;
+   opacity: 0.8;
+   -webkit-transform: rotate(0deg); 
+   -moz-transform: rotate(0deg);
 }
