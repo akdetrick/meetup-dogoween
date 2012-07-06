@@ -4,6 +4,7 @@
 	<meta charset="UTF-8" />
 	<title>dogoween</title>
     <link rel="stylesheet" href="../static/style.css" />
+    <link rel="stylesheet" href="../static/buttons.css" />
     <link href='http://fonts.googleapis.com/css?family=Londrina+Shadow' rel='stylesheet' type='text/css'>
 </head>
 
@@ -12,28 +13,33 @@
 
         <header>
             <h1>happy dog-o-ween</h1>
+            <h4>an exploration of dogs wearing clothes</h4>
         </header>
 
         <div id="content">
             <div id="dog">
+                {% if photourl %}
+                <a target="_blank" href="{{ photourl }}"><img src="{{ photourl }}" /></a>
+                {% else %}
                 <img src="https://gimmebar-assets.s3.amazonaws.com/4f37fd367e4e5.png" />
+                <p>no dogs found</p>
+                {% endif %}
             </div>
             <div id="controls">
-                <a href="#" id="newdog" class="button">new dog</a>
-
-                <a href="#" id="candy" class="candy">THIS DOG IS AWESOME I WANT TO GIVE IT CANDY</a>
+                <a href="#" id="newdog" class="button blue brackets">new dog</a>
+                <a href="#" id="candy" class="button orange candy">THIS DOG IS AWESOME I WANT TO GIVE IT CANDY</a>
             </div>
             <br style="clear:both;" />
             
-            <div id="js-treat" class="treat transitionable" style="display: none"">&nbsp;</div>
+            <div id="js-treat" class="treat transitionable" style="display: none">&nbsp;</div>
         </div>
 
-        <footer>
-            <h3>Powered by</h3>
-            <a href="http://www.meetup.com"><img src="http://img2.meetupstatic.com/906521611995523788/img/header/logo.png" width="66" height="44" /></a>
-        </footer>
-
     </div>
+
+    <footer>
+        <h3>Powered by</h3>
+        <a href="http://www.meetup.com"><img src="http://img2.meetupstatic.com/906521611995523788/img/header/logo.png" width="66" height="44" /></a>
+    </footer>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="../static/dogoween.js"></script>
