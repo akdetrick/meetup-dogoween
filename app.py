@@ -105,7 +105,7 @@ if __name__ == '__main__':
         print "not on heroku"
 
     if portvar:
-        app.run(host='0.0.0.0',port=os.environ['PORT'])
+        app.run(host='0.0.0.0',port=int(os.environ['PORT']))
     else:
         app.run(host='0.0.0.0',port=5000)
 
