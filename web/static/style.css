@@ -139,7 +139,8 @@ header, #content, footer {
 
 #content {
     margin-top: 20px;
-    width: 813px;
+    width: 840px;
+    position: relative;
 }
 
 #dog, #controls {
@@ -147,9 +148,12 @@ header, #content, footer {
 }
 
 #dog {
+    background: #fff;
+    box-shadow: 0px 0px 7px rgba(15,15,15,0.6);
     height: 400px;
     width: 600px;
-    margin-right: 12px;
+    margin-right: 18px;
+    padding: 8px;
 }
 #controls {
     min-width: 20px; /* TEMP */
@@ -171,15 +175,13 @@ footer a {
 .button {
     display:block;
     margin-bottom: 24px;
-    -moz-box-shadow:inset 1px 1px 10px 0px #edcebe;
-    -webkit-box-shadow:inset 1px 1px 10px 0px #edcebe;
     box-shadow:inset 1px 1px 10px 0px #edcebe;
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff954f), color-stop(1, #ff6f00) );
     background:-moz-linear-gradient( center top, #ff954f 5%, #ff6f00 100% );
     background-color:#ff954f;
-    -moz-border-radius:4px;
-    -webkit-border-radius:4px;
-    border-radius:4px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
     border:1px solid #b07b00;
     display:inline-block;
     color:#fff2e3;
@@ -193,7 +195,6 @@ footer a {
 .button:hover {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff6f00), color-stop(1, #ff954f) );
     background:-moz-linear-gradient( center top, #ff6f00 5%, #ff954f 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6f00', endColorstr='#ff954f');
     background-color:#ff6f00;
 }
 .button:active {
@@ -202,16 +203,15 @@ footer a {
 }
 
 .candy {
-    -moz-box-shadow:inset 1px 1px 10px 0px #edcebe;
-    -webkit-box-shadow:inset 1px 1px 10px 0px #edcebe;
+    position: relative;
+    z-index: 4;
     box-shadow:inset 1px 1px 10px 0px #edcebe;
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fc4e4e), color-stop(1, #c70000) );
     background:-moz-linear-gradient( center top, #fc4e4e 5%, #c70000 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fc4e4e', endColorstr='#c70000');
     background-color:#fc4e4e;
-    -moz-border-radius:4px;
-    -webkit-border-radius:4px;
-    border-radius:4px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
     border:1px solid #b07b00;
     display:inline-block;
     color:#fff2e3;
@@ -225,7 +225,6 @@ footer a {
 .candy:hover {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c70000), color-stop(1, #fc4e4e) );
     background:-moz-linear-gradient( center top, #c70000 5%, #fc4e4e 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c70000', endColorstr='#fc4e4e');
     background-color:#c70000;
 }
 .candy:active {
@@ -233,3 +232,27 @@ footer a {
     top:1px;
 }
 
+
+.treat {
+    z-index: 2;
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    right: 29px;
+    top: 63px;
+    opacity: 1;
+    background: url(http://4.bp.blogspot.com/-E2N-z9W-KHI/TqKxUtlZVgI/AAAAAAAAAiA/zR5xFc5WBC0/s320/halloweencandy.PNG) no-repeat;
+    background-size: cover;
+}
+.treat.transitionable {
+    -webkit-transition: all 1200ms cubic-bezier(0.420, 0.000, 1.000, 1.000); 
+    -moz-transition: all 1200ms cubic-bezier(0.420, 0.000, 1.000, 1.000); 
+    -ms-transition: all 1200ms cubic-bezier(0.420, 0.000, 1.000, 1.000); 
+    -o-transition: all 1200ms cubic-bezier(0.420, 0.000, 1.000, 1.000); 
+    transition: all 1200ms cubic-bezier(0.420, 0.000, 1.000, 1.000); /* ease-in */
+}
+.treat.given {
+   right: 600px; 
+   top: 145px;
+   opacity: 0;
+}
